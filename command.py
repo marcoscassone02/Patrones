@@ -1,32 +1,32 @@
 from abc import ABC, abstractmethod
 
-class Command(ABC):
+class Command(ABC):     # Command interface
     @abstractmethod
     def execute(self):
         pass
 
-class Light:
+class Light:        # Receiver
     def on(self):
         print("The light is on")
 
     def off(self):
         print("The light is off")
 
-class LightOnCommand(Command):
+class LightOnCommand(Command):      # Concrete command
     def __init__(self, light: Light):
         self.light = light
 
     def execute(self):
         self.light.on()
 
-class LightOffCommand(Command):
+class LightOffCommand(Command):     # Concrete command
     def __init__(self, light: Light):
         self.light = light
 
     def execute(self):
         self.light.off()
 
-class RemoteControl:
+class RemoteControl:        # Invoker
     def __init__(self):
         self._commands = {}
 
