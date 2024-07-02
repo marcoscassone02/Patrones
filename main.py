@@ -1,18 +1,19 @@
-from builder import *
+from observer import *
 
 if __name__ == "__main__":
-    director = Director()
+    subject = Subject()
 
-    gaming_builder = ComputerBuilder("GAMING-001")
-    gaming_computer = director.construct_gaming_computer(gaming_builder)
+    observer1 = ConcreteObserver("Observer 1")
+    observer2 = ConcreteObserver("Observer 2")
 
-    office_builder = ComputerBuilder("OFFICE-001")
-    office_computer = director.construct_office_computer(office_builder)
+    subject.add_observer(observer1)
+    subject.add_observer(observer2)
 
-    print("Gaming Computer:")
-    print(gaming_computer)
+    subject.notify_observers("Hello, observers!")
 
-    print("\nOffice Computer:")
-    print(office_computer)
+    subject.remove_observer(observer1)
+
+    subject.notify_observers("Another message")
+
 
 
