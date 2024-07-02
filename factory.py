@@ -1,27 +1,27 @@
-class Vehicle:
+class Vehicle:   #Product
     def move(self):
         pass
 
-class Car(Vehicle):
+class Car(Vehicle):   #ConcreteProduct
     def move(self):
         return "Driving a car"
 
-class Bike(Vehicle):
+class Bike(Vehicle):   #ConcreteProduct
     def move(self):
         return "Riding a bike"
 
-class Motorcycle(Vehicle):
+class Motorcycle(Vehicle):   #ConcreteProduct
     def move(self):
         return "Riding a motorcycle"
     
-class VehicleFactory:
+class VehicleFactory:   #Creator
     @staticmethod
     def create_vehicle(vehicle_type):
-        if vehicle_type == "car":
+        if vehicle_type == "car":   #ConcreteCreator
             return Car()
-        elif vehicle_type == "bike":
+        elif vehicle_type == "bike":    #ConcreteCreator
             return Bike()
-        elif vehicle_type == "motorcycle":
+        elif vehicle_type == "motorcycle":    #ConcreteCreator
             return Motorcycle()
         else:
             raise ValueError(f"Unknown vehicle type: {vehicle_type}")
