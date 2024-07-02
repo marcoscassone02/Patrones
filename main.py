@@ -1,20 +1,23 @@
-from chainresponsability import *
-def main(handler):
-    requests = ["request1", "request2", "request3", "request4"]
+from command import *
 
-    for request in requests:
-        result = handler.handle(request)
-        if result:
-            print(result)
-        else:
-            print(f"{request} was not handled")
+def main():
+    light = Light()
+    light_on = LightOnCommand(light)
+    light_off = LightOffCommand(light)
+
+    remote = RemoteControl()
+    remote.set_command("on", light_on)
+    remote.set_command("off", light_off)
+
+    print("Pressing the 'on' button:")
+    remote.press_button("on")
+
+    print("Pressing the 'off' button:")
+    remote.press_button("off")
+
+    print("Pressing an unassigned button:")
+    remote.press_button("up")
 
 if __name__ == "__main__":
-    handler1 = ConcreteHandler1()
-    handler2 = ConcreteHandler2()
-    handler3 = ConcreteHandler3()
+    main()
 
-    handler1.set_next(handler2).set_next(handler3)
-
-    print("Client: Sending requests through the chain of handlers:")
-    main(handler1)
