@@ -1,23 +1,18 @@
-from command import *
-
-def main():
-    light = Light()
-    light_on = LightOnCommand(light)
-    light_off = LightOffCommand(light)
-
-    remote = RemoteControl()
-    remote.set_command("on", light_on)
-    remote.set_command("off", light_off)
-
-    print("Pressing the 'on' button:")
-    remote.press_button("on")
-
-    print("Pressing the 'off' button:")
-    remote.press_button("off")
-
-    print("Pressing an unassigned button:")
-    remote.press_button("up")
+from builder import *
 
 if __name__ == "__main__":
-    main()
+    director = Director()
+
+    gaming_builder = ComputerBuilder("GAMING-001")
+    gaming_computer = director.construct_gaming_computer(gaming_builder)
+
+    office_builder = ComputerBuilder("OFFICE-001")
+    office_computer = director.construct_office_computer(office_builder)
+
+    print("Gaming Computer:")
+    print(gaming_computer)
+
+    print("\nOffice Computer:")
+    print(office_computer)
+
 
