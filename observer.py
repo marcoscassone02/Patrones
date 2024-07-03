@@ -1,4 +1,4 @@
-class Subject:
+class Subject:      # Observable
     def __init__(self):
         self._observers = []
 
@@ -13,12 +13,12 @@ class Subject:
             observer.update(message)
 
 
-class Observer:
+class Observer:    # Observer
     def update(self, message):
         pass
 
 
-class ConcreteObserver(Observer):
+class ConcreteObserver(Observer):   # ConcreteObserver
     def __init__(self, name):
         self.name = name
 
